@@ -1,0 +1,164 @@
+#include <stdio.h>
+
+Ex 1
+
+int fatorial(int n) {
+    if (n == 0 || n == 1) {
+        return 1;
+    }
+  
+    return n * fatorial(n - 1);
+}
+int main() {
+    int n;
+    printf("Digite um número inteiro não negativo: ");
+    scanf("%d", &n);
+    
+    if (n < 0) {
+        printf("Fatorial não é definido para números negativos.\n");
+    } else {
+        printf("Fatorial de %d é %d\n", n, fatorial(n));
+    }
+
+    return 0;
+}
+Ex 2
+#include <stdio.h>
+
+
+int soma_numeros_naturais(int n) {
+    if (n == 0) {
+        return 0;
+    }
+
+    return n + soma_numeros_naturais(n - 1);
+}
+int main() {
+    int n;
+    printf("Digite um número inteiro não negativo: ");
+    scanf("%d", &n);
+
+    if (n < 0) {
+        printf("A soma não é definida para números negativos.\n");
+    } else {
+        printf("A soma dos primeiros %d números naturais é %d\n", n, soma_numeros_naturais(n));
+    }
+
+    return 0;
+} 
+  Ex 3
+  #include <stdio.h>
+int fibonacci(int n) {
+    if (n == 0) {
+        return 0;
+    } else if (n == 1) {
+        return 1;
+    }
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main() {
+    int n;
+    printf("Digite um número inteiro não negativo: ");
+    scanf("%d", &n);
+    if (n < 0) {
+        printf("Fibonacci não é definido para números negativos.\n");
+    } else {
+        printf("O %d-ésimo termo da sequência de Fibonacci é %d\n", n, fibonacci(n));
+    }
+
+    return 0;
+}
+Ex 4
+#include <stdio.h>
+
+int potencia(int x, int n) {
+    if (n == 0) {
+        return 1;
+    }
+    if (n % 2 == 0) {
+        int half = potencia(x, n / 2);
+        return half * half;
+    } else {
+        return x * potencia(x, n - 1);
+    }
+}
+
+int main() {
+    int x, n;
+    printf("Digite a base (x): ");
+    scanf("%d", &x);
+    printf("Digite o expoente (n): ");
+    scanf("%d", &n);
+    
+    printf("%d elevado a %d é %d\n", x, n, potencia(x, n));
+    return 0;
+}
+Ex 5
+#include <stdio.h>
+
+void contagem_regressiva(int n) {
+    if (n < 0) {
+        return;
+    }
+    printf("%d ", n);
+    contagem_regressiva(n - 1);
+}
+
+int main() {
+    int n;
+    printf("Digite um número inteiro não negativo: ");
+    scanf("%d", &n);
+    
+    contagem_regressiva(n);
+    printf("\n");
+
+    return 0;
+}
+Ex 6
+#include <stdio.h>
+
+int soma_digitos(int n) {
+    if (n == 0) {
+        return 0;
+    }
+    return (n % 10) + soma_digitos(n / 10);
+}
+
+int main() {
+    int n;
+    printf("Digite um número inteiro positivo: ");
+    scanf("%d", &n);
+    
+    printf("A soma dos dígitos de %d é %d\n", n, soma_digitos(n));
+    
+    return 0;
+}
+Ex 7
+#include <stdio.h>
+#include <string.h>
+
+void inverter_string(char str[], int inicio, int fim) {
+    if (inicio >= fim) {
+        return;
+    }
+    char temp = str[inicio];
+    str[inicio] = str[fim];
+    str[fim] = temp;
+    inverter_string(str, inicio + 1, fim - 1);
+}
+
+int main() {
+    char str[100];
+    
+    printf("Digite uma string: ");
+    fgets(str, sizeof(str), stdin);
+    str[strcspn(str, "\n")] = '\0';
+
+    int tamanho = strlen(str);
+    inverter_string(str, 0, tamanho - 1);
+
+    printf("String invertida: %s\n", str);
+
+    return 0;
+}
